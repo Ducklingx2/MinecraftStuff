@@ -1,0 +1,269 @@
+{
+  "_meta": {
+    "game": "Minecraft Java Edition",
+    "target_version": "1.21.8",
+    "type": "brewing",
+    },
+  "base_potions": {
+    "awkward_potion": {
+      "output": 1,
+      "ingredients": {
+        "water_bottle": 1,
+        "nether_wart": 1
+      }
+    },
+    "mundane_potion": {
+      "output": 1,
+      "ingredients": {
+        "water_bottle": 1,
+        "redstone_dust": 1
+      }
+    },
+    "thick_potion": {
+      "output": 1,
+      "ingredients": {
+        "water_bottle": 1,
+        "glowstone_dust": 1
+      }
+    },
+    "weakness_potion": {
+      "output": 1,
+      "ingredients": {
+        "water_bottle": 1,
+        "fermented_spider_eye": 1
+      }
+    }
+  },
+  "effect_potions": {
+    "night_vision": {
+      "base": "awkward_potion",
+      "ingredient": "golden_carrot",
+      "normal": {
+        "duration": "3:00"
+      },
+      "extended": {
+        "duration": "8:00"
+      }
+    },
+    "invisibility": {
+      "base": "night_vision",
+      "ingredient": "fermented_spider_eye",
+      "normal": {
+        "duration": "3:00"
+      },
+      "extended": {
+        "duration": "8:00"
+      }
+    },
+    "leaping": {
+      "base": "awkward_potion",
+      "ingredient": "rabbit_foot",
+      "normal": {
+        "duration": "3:00"
+      },
+      "extended": {
+        "duration": "8:00"
+      },
+      "strong": {
+        "duration": "1:30"
+      }
+    },
+    "fire_resistance": {
+      "base": "awkward_potion",
+      "ingredient": "magma_cream",
+      "normal": {
+        "duration": "3:00"
+      },
+      "extended": {
+        "duration": "8:00"
+      }
+    },
+    "swiftness": {
+      "base": "awkward_potion",
+      "ingredient": "sugar",
+      "normal": {
+        "duration": "3:00"
+      },
+      "extended": {
+        "duration": "8:00"
+      },
+      "strong": {
+        "duration": "1:30"
+      }
+    },
+    "slowness": {
+      "base": "swiftness",
+      "ingredient": "fermented_spider_eye",
+      "normal": {
+        "duration": "1:30"
+      },
+      "extended": {
+        "duration": "4:00"
+      },
+      "strong": {
+        "duration": "0:20"
+      }
+    },
+    "water_breathing": {
+      "base": "awkward_potion",
+      "ingredient": "pufferfish",
+      "normal": {
+        "duration": "3:00"
+      },
+      "extended": {
+        "duration": "8:00"
+      }
+    },
+    "healing": {
+      "base": "awkward_potion",
+      "ingredient": "glistering_melon_slice",
+      "normal": {
+        "effect": "Instant Health"
+      },
+      "strong": {
+        "effect": "Instant Health II"
+      }
+    },
+    "harming": {
+      "base": "healing",
+      "ingredient": "fermented_spider_eye",
+      "normal": {
+        "effect": "Instant Damage"
+      },
+      "strong": {
+        "effect": "Instant Damage II"
+      }
+    },
+    "poison": {
+      "base": "awkward_potion",
+      "ingredient": "spider_eye",
+      "normal": {
+        "duration": "0:45"
+      },
+      "extended": {
+        "duration": "1:30"
+      },
+      "strong": {
+        "duration": "0:21"
+      }
+    },
+    "regeneration": {
+      "base": "awkward_potion",
+      "ingredient": "ghast_tear",
+      "normal": {
+        "duration": "0:45"
+      },
+      "extended": {
+        "duration": "1:30"
+      },
+      "strong": {
+        "duration": "0:22"
+      }
+    },
+    "strength": {
+      "base": "awkward_potion",
+      "ingredient": "blaze_powder",
+      "normal": {
+        "duration": "3:00"
+      },
+      "extended": {
+        "duration": "8:00"
+      },
+      "strong": {
+        "duration": "1:30"
+      }
+    },
+    "weakness": {
+      "base": "water_bottle",
+      "ingredient": "fermented_spider_eye",
+      "normal": {
+        "duration": "1:30"
+      },
+      "extended": {
+        "duration": "4:00"
+      }
+    },
+    "slow_falling": {
+      "base": "awkward_potion",
+      "ingredient": "phantom_membrane",
+      "normal": {
+        "duration": "1:30"
+      },
+      "extended": {
+        "duration": "4:00"
+      }
+    },
+    "turtle_master": {
+      "base": "awkward_potion",
+      "ingredient": "turtle_scute",
+      "normal": {
+        "duration": "0:20"
+      },
+      "extended": {
+        "duration": "0:40"
+      },
+      "strong": {
+        "duration": "0:20"
+      }
+    },
+    "oozing": {
+      "base": "awkward_potion",
+      "ingredient": "slime_block",
+      "normal": {
+        "duration": "3:00"
+      },
+      "extended": {
+        "duration": "8:00"
+      }
+    },
+    "weaving": {
+      "base": "awkward_potion",
+      "ingredient": "cobweb",
+      "normal": {
+        "duration": "3:00"
+      },
+      "extended": {
+        "duration": "8:00"
+      }
+    },
+    "wind_charging": {
+      "base": "awkward_potion",
+      "ingredient": "breeze_rod",
+      "normal": {
+        "duration": "3:00"
+      },
+      "extended": {
+        "duration": "8:00"
+      }
+    },
+    "infestation": {
+      "base": "awkward_potion",
+      "ingredient": "stone",
+      "normal": {
+        "duration": "3:00"
+      },
+      "extended": {
+        "duration": "8:00"
+      }
+    }
+  },
+  "modifiers": {
+    "extended": {
+      "ingredient": "redstone_dust",
+      "description": "Extends potion duration when supported."
+    },
+    "strong": {
+      "ingredient": "glowstone_dust",
+      "description": "Increases potion potency when supported."
+    },
+    "splash": {
+      "ingredient": "gunpowder",
+      "description": "Converts a normal potion into a Splash Potion."
+    },
+    "lingering": {
+      "ingredient": "dragon_breath",
+      "requires": "splash_potion",
+      "description": "Converts a Splash Potion into a Lingering Potion."
+    }
+  }
+}

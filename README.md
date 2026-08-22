@@ -9,7 +9,6 @@ Welcome to **Minecraft Stuff**, the website that answers the questions Minecraft
 - "What does this redstone thing actually do?"
 - "Can I legally prosecute Steve?"
 - "Why did my entire base explode?"
-- "How many diamonds did that idiot steal?"
 - "What potion should I make?"
 - "Why am I still playing this game?"
 
@@ -224,3 +223,7 @@ minecraft-stuff/
 │
 └── js/
     └── app.js
+```
+**Developer's Note**
+This was made by a Minecrafter, for the Minecrafters
+**Hope this gives you all nostalgia**... of the good old days... 😌

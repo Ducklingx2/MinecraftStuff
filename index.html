@@ -1,334 +1,1376 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
-  
-<meta charset="UTF-8">
-  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-<title>Minecraft Stuff</title>
-  
-<link rel="stylesheet" href="style.css">
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Minecraft Stuff</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
-  
+
 <body>
-<aside class="sidebar">
-  
-  <div class="brand">
-    
-    <div class="brand-icon">⛏</div>
-    
-      <div>
-        
-        <div class="brand-name">Minecraft</div>
-        <div class="brand-subtitle">STUFF</div>
-  
-      </div>
-  
-  </div>
-  
-  <div class="server-status">
-    <span class="status-dot"></span> OVERWORLD ONLINE
-  </div>
-  <nav class="navigation">
-    
-    <div class="nav-section">MAIN</div>
+
+    <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">⛏</div>
+
+            <div>
+                <div class="brand-name">Minecraft</div>
+                <div class="brand-subtitle">STUFF</div>
+            </div>
+
+        </div>
+
+        <div class="server-status">
+            <span class="status-dot"></span>
+            OVERWORLD ONLINE
+        </div>
+
+        <nav class="navigation">
+
+            <div class="nav-section">MAIN</div>
+
+            <button class="nav-item active" data-page="dashboard">
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+            <div class="nav-section">SURVIVAL</div>
+
+            <button class="nav-item" data-page="survival">
+                <span>⚠</span>
+                How Screwed Am I?
+            </button>
+
+            <button class="nav-item" data-page="court">
+                <span>⚖</span>
+                Minecraft Court
+            </button>
+
+            <div class="nav-section">TOOLS</div>
+
+            <button class="nav-item" data-page="redstone">
+                <span>⚡</span>
+                Redstone
+            </button>
+
+            <button class="nav-item" data-page="potions">
+                <span>🧪</span>
+                Potion Lab
+            </button>
+
+            <button class="nav-item" data-page="detective">
+                <span>🔎</span>
+                Block Detective
+            </button>
+
+            <button class="nav-item" data-page="enchantments">
+                <span>⚔</span>
+                Enchantments
+            </button>
+
+            <button class="nav-item" data-page="crafting">
+                <span>⛏</span>
+                Crafting Calculator
+            </button>
+
+            <div class="nav-section">BUILDING</div>
+
+            <button class="nav-item" data-page="build">
+                <span>🏗</span>
+                Build Planner
+            </button>
+
+            <div class="nav-section">PROGRESS</div>
+
+            <button class="nav-item" data-page="advancements">
+                <span>🏆</span>
+                Advancements
+            </button>
+
+            <div class="nav-section">AMBIENCE</div>
+
+            <button class="nav-item" data-page="music">
+                <span>♫</span>
+                Music
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <div>Minecraft Stuff v1.0</div>
+            <div>BUILT FOR THE OVERWORLD</div>
+        </div>
+
+    </aside>
 
 
-    
-    <button class="nav-item active" data-page="dashboard">
-      <span>⌂</span>Dashboard
-    </button>
+    <!-- =========================================================
+         MAIN CONTENT
+    ========================================================== -->
+
+    <main class="main">
+
+        <!-- =====================================================
+             TOPBAR
+        ====================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <span class="online-indicator"></span>
+                OVERWORLD TOOLS
+            </div>
+
+            <div class="topbar-right">
+                <span id="clock">00:00</span>
+                <span class="separator">•</span>
+                <span>SURVIVAL</span>
+
+                <button
+                    id="musicToggle"
+                    class="music-mini"
+                    title="Play / pause music"
+                >
+                    ♫
+                </button>
+            </div>
+
+        </header>
 
 
-    
-    <div class="nav-section">SURVIVAL</div>
+        <!-- =====================================================
+             DASHBOARD
+        ====================================================== -->
+
+        <section class="page active-page" id="dashboard">
+
+            <div class="hero">
+
+                <div class="eyebrow">
+                    MINECRAFT COMPANION SYSTEM
+                </div>
+
+                <h1>
+                    Welcome to
+                    <span>Minecraft Stuff.</span>
+                </h1>
+
+                <p>
+                    Your all-in-one Minecraft toolkit for survival,
+                    crafting, redstone, building, progression and
+                    several completely necessary legal proceedings.
+                </p>
+
+            </div>
 
 
-    
-    <button class="nav-item" data-page="survival">
-      <span>⚠</span>How Screwed Am I?
-    </button>
+            <div class="dashboard-stats">
 
-    
-    <button class="nav-item" data-page="court">
-      <span>⚖</span>Minecraft Court
-    </button>
+                <div class="stat-card">
 
+                    <div class="stat-number">9</div>
 
-    
-    <div class="nav-section">TOOLS</div>
+                    <div class="stat-label">
+                        TOOLS AVAILABLE
+                    </div>
+
+                </div>
 
 
-    
-    <button class="nav-item" data-page="redstone">
-      <span>⚡</span>Redstone
-    </button>
+                <div class="stat-card">
 
-    
-    <button class="nav-item" data-page="potions">
-      <span>🧪</span>Potion Lab
-    </button>
+                    <div
+                        class="stat-number"
+                        id="dashboardProgress"
+                    >
+                        0%
+                    </div>
 
-    
-    <button class="nav-item" data-page="detective">
-      <span>🔎</span>Block Detective
-    </button>
+                    <div class="stat-label">
+                        ADVANCEMENT PROGRESS
+                    </div>
 
-    
-    <button class="nav-item" data-page="enchantments">
-      <span>⚔</span>Enchantments
-    </button>
-
-    
-    <button class="nav-item" data-page="crafting">
-      <span>⛏</span>Crafting Calculator
-    </button>
+                </div>
 
 
-    
-    <div class="nav-section">BUILDING</div>
+                <div class="stat-card">
 
-    
-    
-    <button class="nav-item" data-page="build">
-      <span>🏗</span>Build Planner
-    </button>
+                    <div class="stat-number">∞</div>
 
+                    <div class="stat-label">
+                        WAYS TO DIE
+                    </div>
 
-    
-    <div class="nav-section">PROGRESS</div>
+                </div>
 
-
-    
-    <button class="nav-item" data-page="advancements">
-      <span>🏆</span>Advancements
-    </button>
+            </div>
 
 
-    
-    <div class="nav-section">AMBIENCE</div>
+            <div class="section-heading">
+
+                <div>
+
+                    <div class="eyebrow">
+                        TOOLKIT
+                    </div>
+
+                    <h2>
+                        Everything you need.
+                    </h2>
+
+                </div>
+
+            </div>
 
 
-    
-    <button class="nav-item" data-page="music">
-      <span>♫</span>Music
-    </button>
-    
-  </nav>
-  <div class="sidebar-footer">
-    <div>Minecraft Stuff v1.0</div>
-    <div>BUILT FOR THE OVERWORLD</div>
-  </div>
-</aside>
+            <div class="tool-grid">
 
-<main class="main">
-  
-<header class="topbar">
-  
-  <div class="topbar-left"><span class="online-indicator"></span> OVERWORLD TOOLS</div>
-  
-  <div class="topbar-right"><span id="clock">00:00</span><span class="separator">•</span><span>SURVIVAL</span><button id="musicToggle" class="music-mini" title="Play / pause music">♫</button></div>
+                <button
+                    class="tool-card"
+                    data-page="survival"
+                >
+                    <div class="tool-icon danger">⚠</div>
 
-</header>
+                    <h3>
+                        How Screwed Am I?
+                    </h3>
 
-<section class="page active-page" id="dashboard">
-  
-  <div class="hero">
-    
-    <div class="eyebrow">MINECRAFT COMPANION SYSTEM</div>
-    
-      <h1>Welcome to <span>Minecraft Stuff.</span></h1>
-    <p>Your all-in-one Minecraft toolkit for survival, crafting, redstone, building, progression and several completely necessary legal proceedings.</p>
-    
-  </div>
+                    <p>
+                        Analyze your survival situation
+                        and receive a brutally honest threat level.
+                    </p>
+                </button>
 
-  
-  <div class="dashboard-stats">
-    
-    <div class="stat-card">
-      
-      <div class="stat-number">9</div>
-      
-      <div class="stat-label">TOOLS AVAILABLE</div>
-      
-    </div>
-    
-    <div class="stat-card">
-      
-      <div class="stat-number" id="dashboardProgress">0%</div>
-      
-      <div class="stat-label">ADVANCEMENT PROGRESS</div>
-    
-    </div>
-    
-    <div class="stat-card">
-      
-      <div class="stat-number">∞</div>
-      
-      <div class="stat-label">WAYS TO DIE</div>
-    
-    </div>
-  
-  </div>
-  <div class="section-heading">
-    
-    <div>
-      
-      <div class="eyebrow">TOOLKIT</div>
-      
-      <h2>Everything you need.</h2>
-      
-    </div>
-    
-  </div>
 
-  
-  <div class="tool-grid">
-    
-    <button class="tool-card" data-page="survival">
-      
-      <div class="tool-icon danger">⚠</div>
-      
-      <h3>How Screwed Am I?</h3>
-      
-      <p>Analyze your survival situation and receive a brutally honest threat level.</p>
-      
-    </button>
+                <button
+                    class="tool-card"
+                    data-page="court"
+                >
+                    <div class="tool-icon purple">⚖</div>
 
-    
-    <button class="tool-card" data-page="court">
-      
-      <div class="tool-icon purple">⚖</div>
-      
-      <h3>Minecraft Court</h3>
-      
-      <p>Put server crimes on trial and generate completely serious verdicts.</p>
-      
-    </button>
-    
-    
-    <button class="tool-card" data-page="redstone">
-      
-      <div class="tool-icon red">⚡</div>
-      
-      <h3>Redstone Encyclopedia</h3>
-      
-      <p>Learn how redstone components work and explore example circuits.</p>
-      
-    </button>
-    
-    
-    <button class="tool-card" data-page="potions">
-      
-      <div class="tool-icon cyan">🧪</div>
-      
-      <h3>Potion Lab</h3>
-      
-      <p>Select an effect and discover the brewing recipe.</p>
-      
-    </button>
-    
-    
-    <button class="tool-card" data-page="detective">
-      
-      <div class="tool-icon blue">🔎</div>
-      
-      <h3>Block Detective</h3>
+                    <h3>
+                        Minecraft Court
+                    </h3>
 
-      
-      <p>Upload a Minecraft screenshot and inspect detected elements.</p>
-      
-    </button>
-    
-    
-    <button class="tool-card" data-page="enchantments">
-      
-      <div class="tool-icon gold">⚔</div>
-      
-      <h3>Enchantment Builder</h3>
-      
-      <p>Plan your enchantments and organize your anvil operations.</p>
-      
-    </button>
+                    <p>
+                        Put server crimes on trial and
+                        generate completely serious verdicts.
+                    </p>
+                </button>
 
-    
-    <button class="tool-card" data-page="crafting">
-      
-      <div class="tool-icon green">⛏</div>
-      
-      <h3>Crafting Calculator</h3>
-      
-      <p>Calculate exactly how many materials you need.</p>
-    
-    </button>
 
-    
-    <button class="tool-card" data-page="build">
-      
-      <div class="tool-icon orange">🏗</div>
-      
-      <h3>Build Planner</h3>
-      
-      <p>Generate simple layer-by-layer building blueprints.</p>
-    
-    </button>
+                <button
+                    class="tool-card"
+                    data-page="redstone"
+                >
+                    <div class="tool-icon red">⚡</div>
 
-    
-    <button class="tool-card" data-page="advancements">
-      
-      <div class="tool-icon yellow">🏆</div>
-      
-      <h3>Advancement Tracker</h3>
-      
-      <p>Track your Minecraft advancement progress and completion rate.</p>
-    
-    </button>
-    
-  </div>
-  
-</section>
+                    <h3>
+                        Redstone Encyclopedia
+                    </h3>
 
-<section class="page" id="survival">
-  
-  <div class="page-header">
-    <div class="eyebrow">SURVIVAL ANALYSIS</div>
-    <h1>How Screwed Am I?</h1>
-    <p>Enter your current situation. Minecraft Stuff will calculate your chances of continuing to exist.</p>
-  </div>
-  <div class="two-column">
-    <div class="panel">
-      <div class="panel-title">SURVIVAL DATA</div>
-      
-<label class="field">
-  <span>❤️ Hearts</span>
-  <input id="health" type="number" min="0" max="20" value="20">
-</label>
-      
-      <label class="field"><span>🛡 Armor</span><input id="armor" type="number" min="0" max="20" value="20"></label><label class="field"><span>🍖 Food</span><input id="food" type="number" min="0" max="20" value="20"></label><label class="field"><span>👾 Hostile mobs nearby</span><input id="mobs" type="number" min="0" value="0"></label><label class="field"><span>📍 Distance to nearest danger</span><input id="distance" type="number" min="0" value="50"></label><label class="field"><span>💎 Diamonds in inventory</span><input id="diamonds" type="number" min="0" value="0"></label><label class="field"><span>🎒 Inventory slots used</span><input id="slots" type="number" min="0" max="36" value="10"></label><button class="primary-button" id="assessButton">ASSESS MY FATE</button></div><div class="result-panel" id="survivalResult"><div class="result-question">?</div><div class="eyebrow">AWAITING ANALYSIS</div><h2>Enter your survival data.</h2><p>The machine is ready to judge you.</p></div></div></section>
+                    <p>
+                        Learn how redstone components work
+                        and explore example circuits.
+                    </p>
+                </button>
 
-<section class="page" id="court"><div class="page-header"><div class="eyebrow">SERVER JUSTICE SYSTEM</div><h1>Minecraft Court</h1><p>Because apparently your server needs a functioning legal system.</p></div><div class="two-column"><div class="panel"><div class="panel-title">FILE A CASE</div><label class="field"><span>Defendant</span><input id="defendant" placeholder="Steve"></label><label class="field"><span>Crime</span><textarea id="crime" placeholder="Stole my diamonds..."></textarea></label><label class="field"><span>Evidence</span><textarea id="evidence" placeholder="Screenshot, witness, chat logs..."></textarea></label><button class="primary-button" id="courtButton">CONVENE COURT</button></div><div class="result-panel" id="courtResult"><div class="eyebrow">COURTROOM</div><h2>No case currently active.</h2><p>Submit a case to begin proceedings.</p></div></div></section>
 
-<section class="page" id="redstone"><div class="page-header"><div class="eyebrow">ENGINEERING DATABASE</div><h1>Redstone Encyclopedia</h1><p>Everything you need to know about suspicious glowing dust.</p></div><div class="redstone-layout"><div class="component-list" id="redstoneList"></div><div class="panel redstone-info" id="redstoneInfo"></div></div></section>
+                <button
+                    class="tool-card"
+                    data-page="potions"
+                >
+                    <div class="tool-icon cyan">🧪</div>
 
-<section class="page" id="potions"><div class="page-header"><div class="eyebrow">ALCHEMY LABORATORY</div><h1>Potion Lab</h1><p>Choose an effect and calculate the recipe.</p></div><div class="two-column"><div class="panel"><div class="panel-title">BREWING CONFIGURATION</div><label class="field"><span>Desired effect</span><select id="potionEffect"></select></label><label class="field"><span>Modifier</span><select id="potionModifier"><option value="normal">Normal</option><option value="extended">Extended</option><option value="strong">Strong</option></select></label><button class="primary-button" id="brewButton">BREW POTION</button></div><div class="potion-display"><div class="potion-bottle">🧪</div><div id="brewResult" class="brew-result">LABORATORY READY</div></div></div></section>
+                    <h3>
+                        Potion Lab
+                    </h3>
 
-<section class="page" id="detective"><div class="page-header"><div class="eyebrow">VISUAL ANALYSIS</div><h1>Block Detective</h1><p>Upload a screenshot and inspect the blocks and objects detected inside it.</p></div><div class="panel upload-panel"><label class="upload-box"><input id="imageInput" type="file" accept="image/*"><div class="upload-icon">🔎</div><h3>Upload Minecraft Screenshot</h3><p>Click here to choose an image.</p></label><img id="imagePreview" class="image-preview" alt="Minecraft screenshot preview"><button class="primary-button" id="detectButton">ANALYZE SCREENSHOT</button><div id="detectResult" class="detect-result"></div></div></section>
+                    <p>
+                        Select an effect and discover
+                        the brewing recipe.
+                    </p>
+                </button>
 
-<section class="page" id="enchantments"><div class="page-header"><div class="eyebrow">ANVIL OPTIMIZATION</div><h1>Enchantment Builder</h1><p>Select your item and desired enchantments.</p></div><div class="two-column"><div class="panel"><div class="panel-title">EQUIPMENT</div><label class="field"><span>Item</span><select id="enchantmentItem"><option>Diamond Sword</option><option>Diamond Pickaxe</option><option>Diamond Axe</option><option>Diamond Helmet</option><option>Diamond Chestplate</option><option>Diamond Leggings</option><option>Diamond Boots</option><option>Bow</option></select></label><div class="enchantment-grid" id="enchantmentChecks"></div><button class="primary-button" id="enchantmentButton">OPTIMIZE ANVIL</button></div><div class="result-panel" id="enchantmentResult"><div class="eyebrow">ANVIL PLAN</div><h2>Nothing selected.</h2><p>Choose your enchantments to generate a plan.</p></div></div></section>
 
-<section class="page" id="crafting"><div class="page-header"><div class="eyebrow">MATERIAL CALCULATOR</div><h1>Crafting Calculator</h1><p>Calculate the materials required to craft an item.</p></div><div class="panel"><div class="input-grid"><label class="field"><span>Item</span><select id="craftingItem"></select></label><label class="field"><span>Quantity</span><input id="craftingQuantity" type="number" min="1" value="1"></label></div><button class="primary-button" id="craftingButton">CALCULATE MATERIALS</button><div id="craftingResult" class="material-grid"></div></div></section>
+                <button
+                    class="tool-card"
+                    data-page="detective"
+                >
+                    <div class="tool-icon blue">🔎</div>
 
-<section class="page" id="build"><div class="page-header"><div class="eyebrow">ARCHITECTURE SYSTEM</div><h1>Build Planner</h1><p>Generate a layer-by-layer blueprint.</p></div><div class="panel"><div class="input-grid three"><label class="field"><span>Width</span><input id="buildWidth" type="number" min="3" max="25" value="12"></label><label class="field"><span>Length</span><input id="buildLength" type="number" min="3" max="25" value="10"></label><label class="field"><span>Height</span><input id="buildHeight" type="number" min="1" max="15" value="6"></label></div><label class="field"><span>Primary block</span><select id="buildBlock"><option>Stone Bricks</option><option>Oak Planks</option><option>Deepslate</option><option>Quartz Block</option><option>Glass</option></select></label><button class="primary-button" id="buildButton">GENERATE BLUEPRINT</button><div id="blueprint" class="blueprint"></div></div></section>
+                    <h3>
+                        Block Detective
+                    </h3>
 
-<section class="page" id="advancements"><div class="page-header"><div class="eyebrow">PROGRESSION DATABASE</div><h1>Advancement Tracker</h1><p>Track your journey through the Overworld, Nether and End.</p></div><div class="progress-card"><div class="progress-top"><div><div class="eyebrow">COMPLETION</div><div id="advancementPercent" class="progress-number">0%</div></div><div id="advancementCount" class="progress-count">0 / 0</div></div><div class="progress-track"><div id="advancementBar" class="progress-fill"></div></div></div><div id="advancementList" class="advancement-list"></div></section>
+                    <p>
+                        Upload a Minecraft screenshot
+                        and inspect detected elements.
+                    </p>
+                </button>
 
-<section class="page" id="music"><div class="page-header"><div class="eyebrow">AMBIENT AUDIO SYSTEM</div><h1>Choose Your Music.</h1><p>Because apparently even mining stone needs a soundtrack. Humanity survives another day.</p></div><div class="music-layout"><div class="panel"><div class="panel-title">MUSIC LIBRARY</div><div id="musicChoices" class="music-choices"></div><div class="volume-row"><label class="field"><span>Volume</span><input id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.5"></label><span id="volumeValue">50%</span></div><button class="primary-button" id="musicPlayButton">PLAY SELECTED TRACK</button></div><div class="music-now"><div class="vinyl">♫</div><div class="eyebrow">NOW PLAYING</div><h2 id="nowPlaying">Nothing playing</h2><p id="musicStatus">Choose a track from the library.</p></div></div></section>
 
-<audio id="musicPlayer" preload="metadata"></audio>
-</main>
-<script src="js/app.js"></script>
+                <button
+                    class="tool-card"
+                    data-page="enchantments"
+                >
+                    <div class="tool-icon gold">⚔</div>
+
+                    <h3>
+                        Enchantment Builder
+                    </h3>
+
+                    <p>
+                        Plan your enchantments and
+                        organize your anvil operations.
+                    </p>
+                </button>
+
+
+                <button
+                    class="tool-card"
+                    data-page="crafting"
+                >
+                    <div class="tool-icon green">⛏</div>
+
+                    <h3>
+                        Crafting Calculator
+                    </h3>
+
+                    <p>
+                        Calculate exactly how many
+                        materials you need.
+                    </p>
+                </button>
+
+
+                <button
+                    class="tool-card"
+                    data-page="build"
+                >
+                    <div class="tool-icon orange">🏗</div>
+
+                    <h3>
+                        Build Planner
+                    </h3>
+
+                    <p>
+                        Generate simple layer-by-layer
+                        building blueprints.
+                    </p>
+                </button>
+
+
+                <button
+                    class="tool-card"
+                    data-page="advancements"
+                >
+                    <div class="tool-icon yellow">🏆</div>
+
+                    <h3>
+                        Advancement Tracker
+                    </h3>
+
+                    <p>
+                        Track your Minecraft advancement
+                        progress and completion rate.
+                    </p>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SURVIVAL
+        ====================================================== -->
+
+        <section class="page" id="survival">
+
+            <div class="page-header">
+
+                <div class="eyebrow">
+                    SURVIVAL ANALYSIS
+                </div>
+
+                <h1>
+                    How Screwed Am I?
+                </h1>
+
+                <p>
+                    Enter your current situation.
+                    Minecraft Stuff will calculate your chances
+                    of continuing to exist.
+                </p>
+
+            </div>
+
+
+            <div class="two-column">
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        SURVIVAL DATA
+                    </div>
+
+                    <label class="field">
+                        <span>❤️ Hearts</span>
+
+                        <input
+                            id="health"
+                            type="number"
+                            min="0"
+                            max="20"
+                            value="20"
+                        >
+                    </label>
+
+
+                    <label class="field">
+                        <span>🛡 Armor</span>
+
+                        <input
+                            id="armor"
+                            type="number"
+                            min="0"
+                            max="20"
+                            value="20"
+                        >
+                    </label>
+
+
+                    <label class="field">
+                        <span>🍖 Food</span>
+
+                        <input
+                            id="food"
+                            type="number"
+                            min="0"
+                            max="20"
+                            value="20"
+                        >
+                    </label>
+
+
+                    <label class="field">
+                        <span>👾 Hostile mobs nearby</span>
+
+                        <input
+                            id="mobs"
+                            type="number"
+                            min="0"
+                            value="0"
+                        >
+                    </label>
+
+
+                    <label class="field">
+                        <span>📍 Distance to nearest danger</span>
+
+                        <input
+                            id="distance"
+                            type="number"
+                            min="0"
+                            value="50"
+                        >
+                    </label>
+
+
+                    <label class="field">
+                        <span>💎 Diamonds in inventory</span>
+
+                        <input
+                            id="diamonds"
+                            type="number"
+                            min="0"
+                            value="0"
+                        >
+                    </label>
+
+
+                    <label class="field">
+                        <span>🎒 Inventory slots used</span>
+
+                        <input
+                            id="slots"
+                            type="number"
+                            min="0"
+                            max="36"
+                            value="10"
+                        >
+                    </label>
+
+
+                    <button
+                        class="primary-button"
+                        id="assessButton"
+                    >
+                        ASSESS MY FATE
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="result-panel"
+                    id="survivalResult"
+                >
+
+                    <div class="result-question">
+                        ?
+                    </div>
+
+                    <div class="eyebrow">
+                        AWAITING ANALYSIS
+                    </div>
+
+                    <h2>
+                        Enter your survival data.
+                    </h2>
+
+                    <p>
+                        The machine is ready to judge you.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MINECRAFT COURT
+        ====================================================== -->
+
+        <section class="page" id="court">
+
+            <div class="page-header">
+
+                <div class="eyebrow">
+                    SERVER JUSTICE SYSTEM
+                </div>
+
+                <h1>
+                    Minecraft Court
+                </h1>
+
+                <p>
+                    Because apparently your server needs
+                    a functioning legal system.
+                </p>
+
+            </div>
+
+
+            <div class="two-column">
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        FILE A CASE
+                    </div>
+
+                    <label class="field">
+                        <span>Defendant</span>
+
+                        <input
+                            id="defendant"
+                            placeholder="Steve"
+                        >
+                    </label>
+
+
+                    <label class="field">
+                        <span>Crime</span>
+
+                        <textarea
+                            id="crime"
+                            placeholder="Stole my diamonds..."
+                        ></textarea>
+                    </label>
+
+
+                    <label class="field">
+                        <span>Evidence</span>
+
+                        <textarea
+                            id="evidence"
+                            placeholder="Screenshot, witness, chat logs..."
+                        ></textarea>
+                    </label>
+
+
+                    <button
+                        class="primary-button"
+                        id="courtButton"
+                    >
+                        CONVENE COURT
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="result-panel"
+                    id="courtResult"
+                >
+
+                    <div class="eyebrow">
+                        COURTROOM
+                    </div>
+
+                    <h2>
+                        No case currently active.
+                    </h2>
+
+                    <p>
+                        Submit a case to begin proceedings.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             REDSTONE
+        ====================================================== -->
+
+        <section class="page" id="redstone">
+
+            <div class="page-header">
+
+                <div class="eyebrow">
+                    ENGINEERING DATABASE
+                </div>
+
+                <h1>
+                    Redstone Encyclopedia
+                </h1>
+
+                <p>
+                    Everything you need to know about
+                    suspicious glowing dust.
+                </p>
+
+            </div>
+
+
+            <div class="redstone-layout">
+
+                <div
+                    class="component-list"
+                    id="redstoneList"
+                ></div>
+
+                <div
+                    class="panel redstone-info"
+                    id="redstoneInfo"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             POTIONS
+        ====================================================== -->
+
+        <section class="page" id="potions">
+
+            <div class="page-header">
+
+                <div class="eyebrow">
+                    ALCHEMY LABORATORY
+                </div>
+
+                <h1>
+                    Potion Lab
+                </h1>
+
+                <p>
+                    Choose an effect and calculate the recipe.
+                </p>
+
+            </div>
+
+
+            <div class="two-column">
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        BREWING CONFIGURATION
+                    </div>
+
+                    <label class="field">
+
+                        <span>
+                            Desired effect
+                        </span>
+
+                        <select id="potionEffect"></select>
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>
+                            Modifier
+                        </span>
+
+                        <select id="potionModifier">
+
+                            <option value="normal">
+                                Normal
+                            </option>
+
+                            <option value="extended">
+                                Extended
+                            </option>
+
+                            <option value="strong">
+                                Strong
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <button
+                        class="primary-button"
+                        id="brewButton"
+                    >
+                        BREW POTION
+                    </button>
+
+                </div>
+
+
+                <div class="potion-display">
+
+                    <div class="potion-bottle">
+                        🧪
+                    </div>
+
+                    <div
+                        id="brewResult"
+                        class="brew-result"
+                    >
+                        LABORATORY READY
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             BLOCK DETECTIVE
+        ====================================================== -->
+
+        <section class="page" id="detective">
+
+            <div class="page-header">
+
+                <div class="eyebrow">
+                    VISUAL ANALYSIS
+                </div>
+
+                <h1>
+                    Block Detective
+                </h1>
+
+                <p>
+                    Upload a screenshot and inspect the blocks
+                    and objects detected inside it.
+                </p>
+
+            </div>
+
+
+            <div class="panel upload-panel">
+
+                <label class="upload-box">
+
+                    <input
+                        id="imageInput"
+                        type="file"
+                        accept="image/*"
+                    >
+
+                    <div class="upload-icon">
+                        🔎
+                    </div>
+
+                    <h3>
+                        Upload Minecraft Screenshot
+                    </h3>
+
+                    <p>
+                        Click here to choose an image.
+                    </p>
+
+                </label>
+
+
+                <img
+                    id="imagePreview"
+                    class="image-preview"
+                    alt="Minecraft screenshot preview"
+                >
+
+
+                <button
+                    class="primary-button"
+                    id="detectButton"
+                >
+                    ANALYZE SCREENSHOT
+                </button>
+
+
+                <div
+                    id="detectResult"
+                    class="detect-result"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ENCHANTMENTS
+        ====================================================== -->
+
+        <section class="page" id="enchantments">
+
+            <div class="page-header">
+
+                <div class="eyebrow">
+                    ANVIL OPTIMIZATION
+                </div>
+
+                <h1>
+                    Enchantment Builder
+                </h1>
+
+                <p>
+                    Select your item and desired enchantments.
+                </p>
+
+            </div>
+
+
+            <div class="two-column">
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        EQUIPMENT
+                    </div>
+
+
+                    <label class="field">
+
+                        <span>
+                            Item
+                        </span>
+
+                        <select id="enchantmentItem">
+
+                            <option>
+                                Diamond Sword
+                            </option>
+
+                            <option>
+                                Diamond Pickaxe
+                            </option>
+
+                            <option>
+                                Diamond Axe
+                            </option>
+
+                            <option>
+                                Diamond Helmet
+                            </option>
+
+                            <option>
+                                Diamond Chestplate
+                            </option>
+
+                            <option>
+                                Diamond Leggings
+                            </option>
+
+                            <option>
+                                Diamond Boots
+                            </option>
+
+                            <option>
+                                Bow
+                            </option>
+
+                        </select>
+
+                    </label>
+
+
+                    <div
+                        class="enchantment-grid"
+                        id="enchantmentChecks"
+                    ></div>
+
+
+                    <button
+                        class="primary-button"
+                        id="enchantmentButton"
+                    >
+                        OPTIMIZE ANVIL
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="result-panel"
+                    id="enchantmentResult"
+                >
+
+                    <div class="eyebrow">
+                        ANVIL PLAN
+                    </div>
+
+                    <h2>
+                        Nothing selected.
+                    </h2>
+
+                    <p>
+                        Choose your enchantments to generate a plan.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CRAFTING
+        ====================================================== -->
+
+        <section class="page" id="crafting">
+
+            <div class="page-header">
+
+                <div class="eyebrow">
+                    MATERIAL CALCULATOR
+                </div>
+
+                <h1>
+                    Crafting Calculator
+                </h1>
+
+                <p>
+                    Calculate the materials required to craft an item.
+                </p>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="input-grid">
+
+                    <label class="field">
+
+                        <span>
+                            Item
+                        </span>
+
+                        <select id="craftingItem"></select>
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>
+                            Quantity
+                        </span>
+
+                        <input
+                            id="craftingQuantity"
+                            type="number"
+                            min="1"
+                            value="1"
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <button
+                    class="primary-button"
+                    id="craftingButton"
+                >
+                    CALCULATE MATERIALS
+                </button>
+
+
+                <div
+                    id="craftingResult"
+                    class="material-grid"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             BUILD PLANNER
+        ====================================================== -->
+
+        <section class="page" id="build">
+
+            <div class="page-header">
+
+                <div class="eyebrow">
+                    ARCHITECTURE SYSTEM
+                </div>
+
+                <h1>
+                    Build Planner
+                </h1>
+
+                <p>
+                    Generate a layer-by-layer blueprint.
+                </p>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="input-grid three">
+
+                    <label class="field">
+
+                        <span>
+                            Width
+                        </span>
+
+                        <input
+                            id="buildWidth"
+                            type="number"
+                            min="3"
+                            max="25"
+                            value="12"
+                        >
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>
+                            Length
+                        </span>
+
+                        <input
+                            id="buildLength"
+                            type="number"
+                            min="3"
+                            max="25"
+                            value="10"
+                        >
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>
+                            Height
+                        </span>
+
+                        <input
+                            id="buildHeight"
+                            type="number"
+                            min="1"
+                            max="15"
+                            value="6"
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <label class="field">
+
+                    <span>
+                        Primary block
+                    </span>
+
+                    <select id="buildBlock">
+
+                        <option>
+                            Stone Bricks
+                        </option>
+
+                        <option>
+                            Oak Planks
+                        </option>
+
+                        <option>
+                            Deepslate
+                        </option>
+
+                        <option>
+                            Quartz Block
+                        </option>
+
+                        <option>
+                            Glass
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <button
+                    class="primary-button"
+                    id="buildButton"
+                >
+                    GENERATE BLUEPRINT
+                </button>
+
+
+                <div
+                    id="blueprint"
+                    class="blueprint"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ADVANCEMENTS
+        ====================================================== -->
+
+        <section class="page" id="advancements">
+
+            <div class="page-header">
+
+                <div class="eyebrow">
+                    PROGRESSION DATABASE
+                </div>
+
+                <h1>
+                    Advancement Tracker
+                </h1>
+
+                <p>
+                    Track your journey through the Overworld,
+                    Nether and End.
+                </p>
+
+            </div>
+
+
+            <div class="progress-card">
+
+                <div class="progress-top">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            COMPLETION
+                        </div>
+
+                        <div
+                            id="advancementPercent"
+                            class="progress-number"
+                        >
+                            0%
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="advancementCount"
+                        class="progress-count"
+                    >
+                        0 / 0
+                    </div>
+
+                </div>
+
+
+                <div class="progress-track">
+
+                    <div
+                        id="advancementBar"
+                        class="progress-fill"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="advancementList"
+                class="advancement-list"
+            ></div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MUSIC
+        ====================================================== -->
+
+        <section class="page" id="music">
+
+            <div class="page-header">
+
+                <div class="eyebrow">
+                    AMBIENT AUDIO SYSTEM
+                </div>
+
+                <h1>
+                    Choose Your Music.
+                </h1>
+
+                <p>
+                    Because apparently even mining stone needs
+                    a soundtrack. Humanity survives another day.
+                </p>
+
+            </div>
+
+
+            <div class="music-layout">
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        MUSIC LIBRARY
+                    </div>
+
+                    <div
+                        id="musicChoices"
+                        class="music-choices"
+                    ></div>
+
+
+                    <div class="volume-row">
+
+                        <label class="field">
+
+                            <span>
+                                Volume
+                            </span>
+
+                            <input
+                                id="musicVolume"
+                                type="range"
+                                min="0"
+                                max="1"
+                                step="0.01"
+                                value="0.5"
+                            >
+
+                        </label>
+
+                        <span id="volumeValue">
+                            50%
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="musicPlayButton"
+                    >
+                        PLAY SELECTED TRACK
+                    </button>
+
+                </div>
+
+
+                <div class="music-now">
+
+                    <div class="vinyl">
+                        ♫
+                    </div>
+
+                    <div class="eyebrow">
+                        NOW PLAYING
+                    </div>
+
+                    <h2 id="nowPlaying">
+                        Nothing playing
+                    </h2>
+
+                    <p id="musicStatus">
+                        Choose a track from the library.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             AUDIO PLAYER
+        ====================================================== -->
+
+        <audio
+            id="musicPlayer"
+            preload="metadata"
+        ></audio>
+
+    </main>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script src="js/app.js"></script>
+
 </body>
+
 </html>

@@ -53,23 +53,41 @@ body {
 
 .sidebar {
     position: fixed;
-
     top: 0;
     left: 0;
     bottom: 0;
-
     width: 260px;
-
     background: rgba(8, 11, 9, 0.96);
-
     border-right: 1px solid var(--border);
-
     padding: 22px 14px;
-
     display: flex;
     flex-direction: column;
-
     z-index: 100;
+}
+
+.navigation {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 3px;
+}
+
+/* Sidebar scrollbar */
+.navigation::-webkit-scrollbar {
+    width: 4px;
+}
+
+.navigation::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.navigation::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+.navigation::-webkit-scrollbar-thumb:hover {
+    background: #3d5144;
 }
 
 .brand {

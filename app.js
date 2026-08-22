@@ -260,76 +260,389 @@ renderRedstone(redstoneData[0]);
 /* =========================================================
    POTIONS
 ========================================================= */
+// ---------- potions ----------
 
-const potions = {
-    Speed: [
-        'Sugar',
-        'Makes you faster.'
-    ],
+let potionData = null;
 
-    Strength: [
-        'Blaze Powder',
-        'Increases melee damage.'
-    ],
+const potionInput = $('potionEffect');
+const potionModifier = $('potionModifier');
+const brewButton = $('brewButton');
+const brewResult = $('brewResult');
 
-    'Night Vision': [
-        'Golden Carrot',
-        'Lets you see clearly in darkness.'
-    ],
 
-    'Fire Resistance': [
-        'Magma Cream',
-        'Protects against fire and lava.'
-    ],
+// Load potion database
+async function loadPotions() {
+    try {
+        const response = await fetch('data/potions.json');
 
-    'Water Breathing': [
-        'Pufferfish',
-        'Lets you breathe underwater.'
-    ],
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
 
-    Swiftness: [
-        'Sugar',
-        'Speed effect, because apparently walking was too difficult.'
-    ]
-};
+        potionData = await response.json();
 
-Object.keys(potions).forEach(effect => {
-    const option = document.createElement('option');
+        console.log(
+            `Loaded ${Object.keys(potionData.effect_potions).length} potion recipes.`
+        );
 
-    option.value = effect;
-    option.textContent = effect;
+    } catch (error) {
+        console.error('Failed to load data/potions.json:', error);
 
-    $('potionEffect').appendChild(option);
-});
+        brewResult.innerHTML = `
+            <div class="eyebrow">BREWING ERROR</div>
+            <h2>Could not load potion database.</h2>
+            <p>
+                Make sure <strong>data/potions.json</strong> is in the same
+                directory as your website files.
+            </p>
+        `;
+    }
+}
 
-$('brewButton').addEventListener('click', () => {
-    const effect = $('potionEffect').value;
-    const modifier = $('potionModifier').value;
-    const base = potions[effect][0];
 
-    const modifierItem =
-        modifier === 'extended'
-            ? 'Redstone Dust'
-            : modifier === 'strong'
-                ? 'Glowstone Dust'
-                : 'No modifier';
+// Convert names like "night_vision" → "Night Vision"
+function formatPotionName(name) {
+    return name
+        .replace(/_/g, ' ')
+        .replace(/\b\w/g, char => char.toUpperCase());
+}
 
-    $('brewResult').innerHTML = `
-        <h2>${effect} Potion</h2>
+
+// Convert names like "golden_carrot" → "Golden Carrot"
+function formatIngredientName(name) {
+    return name
+        .replace(/_/g, ' ')
+        .replace(/\b\w/g, char => char.toUpperCase());
+}
+
+
+// Find potion regardless of capitalization
+function findPotion(search) {
+
+    if (!potionData || !search) {
+        return null;
+    }
+
+    const normalized = search
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, '_');
+
+    const potions = potionData.effect_potions;
+
+    // Exact match
+    if (potions[normalized]) {
+        return {
+            key: normalized,
+            data: potions[normalized]
+        };
+    }
+
+    // Match without underscores
+    const compactSearch = normalized.replace(/_/g, '');
+
+    for (const key of Object.keys(potions)) {
+
+        if (key.replace(/_/g, '') === compactSearch) {
+            return {
+                key,
+                data: potions[key]
+            };
+        }
+    }
+
+    // Partial match
+    for (const key of Object.keys(potions)) {
+
+        if (
+            key.includes(normalized) ||
+            formatPotionName(key)
+                .toLowerCase()
+                .includes(search.trim().toLowerCase())
+        ) {
+            return {
+                key,
+                data: potions[key]
+            };
+        }
+    }
+
+    return null;
+}
+
+
+// Build the brewing chain
+function getBrewingSteps(potionKey) {
+
+    const steps = [];
+    let currentKey = potionKey;
+    let safety = 0;
+
+    while (currentKey && safety < 10) {
+
+        safety++;
+
+        // Special case: water bottle
+        if (currentKey === 'water_bottle') {
+
+            steps.unshift({
+                type: 'base',
+                name: 'Water Bottle',
+                ingredient: null
+            });
+
+            break;
+        }
+
+        // Base potion
+        const basePotion =
+            potionData.base_potions[currentKey];
+
+        if (basePotion) {
+
+            steps.unshift({
+                type: 'base',
+                name: formatPotionName(currentKey),
+                ingredient: basePotion.ingredients
+            });
+
+            break;
+        }
+
+        // Effect potion
+        const potion =
+            potionData.effect_potions[currentKey];
+
+        if (!potion) {
+            break;
+        }
+
+        steps.unshift({
+            type: 'brew',
+            name: formatPotionName(currentKey),
+            ingredient: potion.ingredient
+        });
+
+        currentKey = potion.base;
+    }
+
+    return steps;
+}
+
+
+// Create the HTML for the recipe
+function renderPotionRecipe(potionKey, potion) {
+
+    const steps = getBrewingSteps(potionKey);
+
+    const modifier =
+        potionModifier.value;
+
+    let html = `
+        <div class="eyebrow">BREWING GUIDE</div>
+
+        <h2>${formatPotionName(potionKey)} Potion</h2>
 
         <p>
-            Base ingredient:
-            <strong>${base}</strong><br>
-
-            Modifier:
-            <strong>${modifierItem}</strong>
+            Follow these steps in order using a brewing stand.
         </p>
 
+        <div class="potion-steps">
+    `;
+
+
+    // Base potion chain
+    steps.forEach((step, index) => {
+
+        if (step.type === 'base') {
+
+            html += `
+                <div class="potion-step">
+
+                    <div class="potion-step-number">
+                        ${index + 1}
+                    </div>
+
+                    <div class="potion-step-content">
+
+                        <div class="potion-step-title">
+                            Prepare ${step.name}
+                        </div>
+
+                        <div class="potion-step-description">
+                            Place
+                            <strong>
+                                ${formatIngredientName(
+                                    Object.keys(step.ingredient)[0]
+                                )}
+                            </strong>
+                            in the brewing stand with a
+                            <strong>Water Bottle</strong>.
+                        </div>
+
+                    </div>
+
+                </div>
+            `;
+
+            return;
+        }
+
+
+        html += `
+            <div class="potion-step">
+
+                <div class="potion-step-number">
+                    ${index + 1}
+                </div>
+
+                <div class="potion-step-content">
+
+                    <div class="potion-step-title">
+                        Brew ${step.name}
+                    </div>
+
+                    <div class="potion-step-description">
+                        Add
+                        <strong>
+                            ${formatIngredientName(step.ingredient)}
+                        </strong>
+                        to the previous potion.
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+    });
+
+
+    // Modifier
+    if (modifier !== 'normal') {
+
+        const modifierData =
+            potionData.modifiers[modifier];
+
+        if (modifierData) {
+
+            let requiresText = '';
+
+            if (modifierData.requires) {
+                requiresText = `
+                    <br>
+                    <small>
+                        Requires ${formatIngredientName(
+                            modifierData.requires
+                        )}
+                    </small>
+                `;
+            }
+
+            html += `
+                <div class="potion-step modifier-step">
+
+                    <div class="potion-step-number">
+                        ${steps.length + 1}
+                    </div>
+
+                    <div class="potion-step-content">
+
+                        <div class="potion-step-title">
+                            Apply ${formatPotionName(modifier)}
+                        </div>
+
+                        <div class="potion-step-description">
+                            Add
+                            <strong>
+                                ${formatIngredientName(
+                                    modifierData.ingredient
+                                )}
+                            </strong>
+                            to the potion.
+
+                            ${requiresText}
+                        </div>
+
+                    </div>
+
+                </div>
+            `;
+        }
+    }
+
+
+    html += `
+        </div>
+
         <div class="analysis-meta">
-            BREWING STATUS: READY · EFFECT: ${modifier.toUpperCase()}
+            BREWING STATUS: READY<br>
+            POTION: ${formatPotionName(potionKey).toUpperCase()}<br>
+            MODIFIER: ${modifier.toUpperCase()}
         </div>
     `;
+
+    brewResult.innerHTML = html;
+}
+
+
+// Brew button
+brewButton.addEventListener('click', () => {
+
+    if (!potionData) {
+        brewResult.innerHTML = `
+            <div class="eyebrow">BREWING DATABASE</div>
+            <h2>Still loading...</h2>
+            <p>The potion database hasn't finished loading yet.</p>
+        `;
+
+        return;
+    }
+
+
+    const search = potionInput.value;
+
+    if (!search.trim()) {
+
+        brewResult.innerHTML = `
+            <div class="eyebrow">BREWING GUIDE</div>
+            <h2>No potion selected.</h2>
+            <p>Enter a potion name first.</p>
+        `;
+
+        return;
+    }
+
+
+    const result = findPotion(search);
+
+    if (!result) {
+
+        brewResult.innerHTML = `
+            <div class="eyebrow">BREWING GUIDE</div>
+            <h2>Potion not found.</h2>
+            <p>
+                Try something like
+                <strong>Night Vision</strong>,
+                <strong>Strength</strong>,
+                <strong>Swiftness</strong>,
+                or
+                <strong>Fire Resistance</strong>.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    renderPotionRecipe(
+        result.key,
+        result.data
+    );
 });
+
+
+// Load database when the app starts
+loadPotions();
 
 
 /* =========================================================

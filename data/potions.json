@@ -3,7 +3,8 @@
     "game": "Minecraft Java Edition",
     "target_version": "1.21.8",
     "type": "brewing"
-    },
+  },
+
   "base_potions": {
     "awkward_potion": {
       "output": 1,
@@ -12,6 +13,7 @@
         "nether_wart": 1
       }
     },
+
     "mundane_potion": {
       "output": 1,
       "ingredients": {
@@ -19,6 +21,7 @@
         "redstone_dust": 1
       }
     },
+
     "thick_potion": {
       "output": 1,
       "ingredients": {
@@ -26,6 +29,7 @@
         "glowstone_dust": 1
       }
     },
+
     "weakness_potion": {
       "output": 1,
       "ingredients": {
@@ -34,6 +38,7 @@
       }
     }
   },
+
   "effect_potions": {
     "night_vision": {
       "base": "awkward_potion",
@@ -45,6 +50,7 @@
         "duration": "8:00"
       }
     },
+
     "invisibility": {
       "base": "night_vision",
       "ingredient": "fermented_spider_eye",
@@ -55,6 +61,7 @@
         "duration": "8:00"
       }
     },
+
     "leaping": {
       "base": "awkward_potion",
       "ingredient": "rabbit_foot",
@@ -68,6 +75,7 @@
         "duration": "1:30"
       }
     },
+
     "fire_resistance": {
       "base": "awkward_potion",
       "ingredient": "magma_cream",
@@ -78,6 +86,7 @@
         "duration": "8:00"
       }
     },
+
     "swiftness": {
       "base": "awkward_potion",
       "ingredient": "sugar",
@@ -91,8 +100,12 @@
         "duration": "1:30"
       }
     },
+
     "slowness": {
-      "base": "swiftness",
+      "base": [
+        "swiftness",
+        "leaping"
+      ],
       "ingredient": "fermented_spider_eye",
       "normal": {
         "duration": "1:30"
@@ -104,6 +117,7 @@
         "duration": "0:20"
       }
     },
+
     "water_breathing": {
       "base": "awkward_potion",
       "ingredient": "pufferfish",
@@ -114,6 +128,7 @@
         "duration": "8:00"
       }
     },
+
     "healing": {
       "base": "awkward_potion",
       "ingredient": "glistering_melon_slice",
@@ -124,8 +139,12 @@
         "effect": "Instant Health II"
       }
     },
+
     "harming": {
-      "base": "healing",
+      "base": [
+        "healing",
+        "poison"
+      ],
       "ingredient": "fermented_spider_eye",
       "normal": {
         "effect": "Instant Damage"
@@ -134,6 +153,7 @@
         "effect": "Instant Damage II"
       }
     },
+
     "poison": {
       "base": "awkward_potion",
       "ingredient": "spider_eye",
@@ -147,6 +167,7 @@
         "duration": "0:21"
       }
     },
+
     "regeneration": {
       "base": "awkward_potion",
       "ingredient": "ghast_tear",
@@ -160,6 +181,7 @@
         "duration": "0:22"
       }
     },
+
     "strength": {
       "base": "awkward_potion",
       "ingredient": "blaze_powder",
@@ -173,9 +195,10 @@
         "duration": "1:30"
       }
     },
+
     "weakness": {
-      "base": "water_bottle",
-      "ingredient": "fermented_spider_eye",
+      "base": "weakness_potion",
+      "ingredient": null,
       "normal": {
         "duration": "1:30"
       },
@@ -183,6 +206,7 @@
         "duration": "4:00"
       }
     },
+
     "slow_falling": {
       "base": "awkward_potion",
       "ingredient": "phantom_membrane",
@@ -193,6 +217,7 @@
         "duration": "4:00"
       }
     },
+
     "turtle_master": {
       "base": "awkward_potion",
       "ingredient": "turtle_scute",
@@ -206,6 +231,7 @@
         "duration": "0:20"
       }
     },
+
     "oozing": {
       "base": "awkward_potion",
       "ingredient": "slime_block",
@@ -216,6 +242,7 @@
         "duration": "8:00"
       }
     },
+
     "weaving": {
       "base": "awkward_potion",
       "ingredient": "cobweb",
@@ -226,6 +253,7 @@
         "duration": "8:00"
       }
     },
+
     "wind_charging": {
       "base": "awkward_potion",
       "ingredient": "breeze_rod",
@@ -236,6 +264,7 @@
         "duration": "8:00"
       }
     },
+
     "infestation": {
       "base": "awkward_potion",
       "ingredient": "stone",
@@ -247,23 +276,27 @@
       }
     }
   },
+
   "modifiers": {
     "extended": {
       "ingredient": "redstone_dust",
-      "description": "Extends potion duration when supported."
+      "description": "Extends the duration of supported potions."
     },
+
     "strong": {
       "ingredient": "glowstone_dust",
-      "description": "Increases potion potency when supported."
+      "description": "Increases the potency of supported potions to Level II."
     },
+
     "splash": {
       "ingredient": "gunpowder",
-      "description": "Converts a normal potion into a Splash Potion."
+      "description": "Converts a potion into its Splash Potion variant."
     },
+
     "lingering": {
       "ingredient": "dragon_breath",
       "requires": "splash_potion",
-      "description": "Converts a Splash Potion into a Lingering Potion."
+      "description": "Converts a Splash Potion into its Lingering Potion variant."
     }
   }
 }

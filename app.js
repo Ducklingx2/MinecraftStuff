@@ -286,7 +286,7 @@ async function loadPotions() {
         );
 
     } catch (error) {
-        console.error("Failed to load data/potions.json:", error);
+        console.error('Failed to load data/potions.json:', error);
 
         brewResult.innerHTML = `
             <div class="eyebrow">BREWING ERROR</div>

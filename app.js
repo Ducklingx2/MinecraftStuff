@@ -707,27 +707,51 @@ updateAdvancements();
 
 const tracks = [
     {
-        name: 'Overworld',
-        artist: 'Minecraft Stuff',
-        src: 'music/overworld.mp3'
+        name: 'Sweden',
+        artist: 'C418',
+        src: 'music/sweden.mp3'
     },
 
     {
-        name: 'Night Mining',
-        artist: 'Minecraft Stuff',
-        src: 'music/night-mining.mp3'
+        name: 'Subwoofer Lullaby',
+        artist: 'C418',
+        src: 'music/subwoofer-lullaby.mp3'
     },
 
     {
-        name: 'Deep Cave',
-        artist: 'Minecraft Stuff',
-        src: 'music/deep-cave.mp3'
+        name: 'Moog City',
+        artist: 'C418',
+        src: 'music/moog-city.mp3'
     },
 
     {
-        name: 'Building Mode',
-        artist: 'Minecraft Stuff',
-        src: 'music/building.mp3'
+        name: 'Wet Hands',
+        artist: 'C418',
+        src: 'music/wet-hands.mp3'
+    },
+
+    {
+        name: 'Aria Math',
+        artist: 'C418',
+        src: 'music/aria-math.mp3'
+    },
+
+    {
+        name: 'Haggstrom',
+        artist: 'C418',
+        src: 'music/haggstrom.mp3'
+    },
+
+    {
+        name: 'Mice on Venus',
+        artist: 'C418',
+        src: 'music/mice-on-venus.mp3'
+    },
+
+    {
+        name: 'Moog City 2',
+        artist: 'C418',
+        src: 'music/moog-city-2.mp3'
     }
 ];
 

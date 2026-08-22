@@ -693,99 +693,55 @@
              POTIONS
         ====================================================== -->
 
-        <section class="page" id="potions">
+        <div class="potion-panel">
+            
+    <div class="form-group">
+        
+        <label for="potionEffect">POTION</label>
+        <input
+            type="text"
+            id="potionEffect"
+            placeholder="Search potion..."
+            autocomplete="off"
+        >
+    </div>
 
-            <div class="page-header">
+    <div class="form-group">
+        
+        <label for="potionModifier">MODIFIER</label>
+        
+        <select id="potionModifier">
+            
+            <option value="normal">Normal</option>
+            
+            <option value="extended">Extended</option>
+            
+            <option value="strong">Strong</option>
+            
+            <option value="splash">Splash</option>
+            
+            <option value="lingering">Lingering</option>
+            
+        </select>
+        
+    </div>
 
-                <div class="eyebrow">
-                    ALCHEMY LABORATORY
-                </div>
+    <button id="brewButton" class="primary-button">
+        SHOW BREWING STEPS
+    </button>
 
-                <h1>
-                    Potion Lab
-                </h1>
-
-                <p>
-                    Choose an effect and calculate the recipe.
-                </p>
-
-            </div>
-
-
-            <div class="two-column">
-
-                <div class="panel">
-
-                    <div class="panel-title">
-                        BREWING CONFIGURATION
-                    </div>
-
-                    <label class="field">
-
-                        <span>
-                            Desired effect
-                        </span>
-
-                        <select id="potionEffect"></select>
-
-                    </label>
-
-
-                    <label class="field">
-
-                        <span>
-                            Modifier
-                        </span>
-
-                        <select id="potionModifier">
-
-                            <option value="normal">
-                                Normal
-                            </option>
-
-                            <option value="extended">
-                                Extended
-                            </option>
-
-                            <option value="strong">
-                                Strong
-                            </option>
-
-                        </select>
-
-                    </label>
-
-
-                    <button
-                        class="primary-button"
-                        id="brewButton"
-                    >
-                        BREW POTION
-                    </button>
-
-                </div>
-
-
-                <div class="potion-display">
-
-                    <div class="potion-bottle">
-                        🧪
-                    </div>
-
-                    <div
-                        id="brewResult"
-                        class="brew-result"
-                    >
-                        LABORATORY READY
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
+    <div id="brewResult" class="result-panel">
+        
+        <div class="eyebrow">BREWING GUIDE</div>
+        
+        <h2>Select a potion</h2>
+        
+        <p>Search for a potion to see exactly how to brew it.</p>
+        
+    </div>
+            
+</div>
+        
         <!-- =====================================================
              BLOCK DETECTIVE
         ====================================================== -->

@@ -1478,3 +1478,53 @@ body {
         display: none;
     }
 }
+
+.potion-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.potion-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.potion-step-number {
+    min-width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    font-weight: 800;
+}
+
+.potion-step-content {
+    flex: 1;
+}
+
+.potion-step-title {
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.potion-step-description {
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.potion-step-description strong {
+    color: var(--text-primary);
+}
+
+.modifier-step {
+    border-style: dashed;
+}

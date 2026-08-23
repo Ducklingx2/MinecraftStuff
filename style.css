@@ -481,13 +481,12 @@ body {
     display: grid;
     place-items: center;
 
-    border-radius: 9px;
+    background: #142319;
 
-    background: #172019;
+    border: 1px solid #2a4931;
+    border-radius: 10px;
 
-    font-size: 21px;
-
-    margin-bottom: 15px;
+    font-size: 22px;
 }
 
 .tool-card h3 {

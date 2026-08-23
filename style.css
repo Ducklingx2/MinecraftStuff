@@ -505,39 +505,6 @@ body {
     margin-bottom: 15px;
 }
 
-.tool-icon.danger {
-    color: var(--red);
-}
-
-.tool-icon.purple {
-    color: var(--purple);
-}
-
-.tool-icon.red {
-    color: #ff6565;
-}
-
-.tool-icon.cyan {
-    color: var(--cyan);
-}
-
-.tool-icon.blue {
-    color: var(--blue);
-}
-
-.tool-icon.gold,
-.tool-icon.yellow {
-    color: var(--yellow);
-}
-
-.tool-icon.green {
-    color: var(--green);
-}
-
-.tool-icon.orange {
-    color: var(--orange);
-}
-
 .tool-card h3 {
     margin: 0 0 8px;
 

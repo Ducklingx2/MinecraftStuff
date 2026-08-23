@@ -99,21 +99,6 @@ body {
     padding: 4px 10px 22px;
 }
 
-.brand-icon {
-    width: 42px;
-    height: 42px;
-
-    display: grid;
-    place-items: center;
-
-    background: #142319;
-
-    border: 1px solid #2a4931;
-    border-radius: 10px;
-
-    font-size: 22px;
-}
-
 .brand-name {
     font-family: 'Space Mono', monospace;
     font-weight: 700;
